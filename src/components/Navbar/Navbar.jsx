@@ -20,8 +20,12 @@ import {
   Whatsapp,
   NavLinkLogo,
 } from "./NavbarElements";
-import { Badge } from "antd";
+import { Badge } from "@material-ui/core";
+import { useLocation } from "react-router";
+
 export const Navbar = ({ toggleSidebar, totalItems }) => {
+  const location = useLocation();
+
   return (
     <>
       <NavStart>
@@ -68,15 +72,13 @@ export const Navbar = ({ toggleSidebar, totalItems }) => {
           <NavBtnIcon to="whatsapp">
             <Whatsapp />
           </NavBtnIcon>
-          <NavBtnIcon to="/cart">
-            <Badge
-              count={totalItems}
-              style={{ backgroundColor: "blue" }}
-              size="small"
-            >
-              <Cart />
-            </Badge>
-          </NavBtnIcon>
+          {location.pathname === "/" && (
+            <NavBtnIcon to="/carro">
+              <Badge badgeContent={totalItems} color="secondary">
+                <Cart />
+              </Badge>
+            </NavBtnIcon>
+          )}
         </NavEnd>
       </Nav>
     </>

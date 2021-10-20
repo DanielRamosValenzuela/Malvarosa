@@ -120,7 +120,7 @@ export const NavSearchForm = styled.form`
   align-items: center;
   justify-content: space-between;
   background: #e26d5c;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border-radius: 0.5rem;
   color: white;
   box-shadow: 0.25rem 0.25rem 0rem #f0b2a8;

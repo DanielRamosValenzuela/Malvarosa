@@ -7,10 +7,12 @@ import {
 } from "react-router-dom";
 import { commerce } from "../components/lib/commerce";
 
-import { Footer } from "../components/Footer/Footer";
+// import { Footer } from "../components/Footer/Footer";
 import { Navbar } from "../components/Navbar/Navbar";
 import { HomeScreen } from "../components/screens/HomeScreen";
 import { Sidebar } from "../components/Sidebar/Sidebar";
+import { Cart } from "../components/screens/Cart";
+import { Checkout } from "../components/screens/CheckoutForm/Checkout/Checkout";
 
 export const AppRouter = () => {
   const [products, setProducts] = useState([]);
@@ -32,6 +34,23 @@ export const AppRouter = () => {
     setCart(item.cart);
   };
 
+  const handleUpdateCartQty = async (productId, quantity) => {
+    const { cart } = await commerce.cart.update(productId, { quantity });
+    setCart(cart);
+  };
+
+  const handleRemoveFromCart = async (productId) => {
+    const { cart } = await commerce.cart.remove(productId);
+
+    setCart(cart);
+  };
+
+  const handleEmptyCart = async () => {
+    const { cart } = await commerce.cart.empty();
+
+    setCart(cart);
+  };
+
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -41,7 +60,7 @@ export const AppRouter = () => {
     setIsOpenSidebar(!isOpenSidebar);
   };
 
-  console.log(cart);
+  // console.log(cart);
 
   return (
     <div>
@@ -58,12 +77,21 @@ export const AppRouter = () => {
             <Route path="/" exact>
               <HomeScreen products={products} onAddToCart={handleAddTocart} />
             </Route>
+            <Route path="/carro" exact>
+              <Cart
+                cart={cart}
+                onUpdateCartQty={handleUpdateCartQty}
+                onRemoveFromCart={handleRemoveFromCart}
+                onEmptyCart={handleEmptyCart}
+              />
+            </Route>
+            <Route path="/checkout" exact>
+              <Checkout cart={cart} />
+            </Route>
             <Redirect to="/" />
           </Switch>
         </main>
-        <footer className="row center">
-          <Footer />
-        </footer>
+        <footer className="row center">{/* <Footer /> */}</footer>
       </Router>
     </div>
   );
