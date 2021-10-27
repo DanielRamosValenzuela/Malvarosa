@@ -7,15 +7,20 @@ import {
   SidebarMenu,
   SidebarLink,
   SideBtnWrap,
-  SidebarRoute,
   SideSearchForm,
   SideInputForm,
   SideBtnSearch,
-  SideSearch,
   SideTimes,
 } from "./SidebarElements";
 
-export const Sidebar = ({ toggleSidebar, isOpenSidebar }) => {
+export const Sidebar = ({
+  toggleSidebar,
+  isOpenSidebar,
+  categories,
+  handleChange,
+  handleReset,
+  search,
+}) => {
   return (
     <SidebarContainer isOpenSidebar={isOpenSidebar}>
       <IconClose>
@@ -26,32 +31,23 @@ export const Sidebar = ({ toggleSidebar, isOpenSidebar }) => {
           <SidebarLink to="/" onClick={toggleSidebar}>
             Inicio
           </SidebarLink>
-          <SidebarLink to="/macateros" onClick={toggleSidebar}>
-            Maceteros
-          </SidebarLink>
-          <SidebarLink to="/flores" onClick={toggleSidebar}>
-            Flores
-          </SidebarLink>
-          <SidebarLink to="/plantas" onClick={toggleSidebar}>
-            Plantas
-          </SidebarLink>
-          <SidebarLink to="/herramientas" onClick={toggleSidebar}>
-            Herramientas
-          </SidebarLink>
+          {categories.data &&
+            categories.data.map((categorie) => (
+              <SidebarLink to={`/${categorie.name}`} key={categorie.id}>
+                {categorie.name}
+              </SidebarLink>
+            ))}
         </SidebarMenu>
         <SideBtnWrap>
-          <SidebarRoute to="/signup" onClick={toggleSidebar}>
-            Iniciar sesión
-          </SidebarRoute>
-        </SideBtnWrap>
-        <SideBtnWrap>
           <SideSearchForm>
+            <SideInputForm
+              type="text"
+              placeholder="Búsqueda..."
+              onChange={handleChange}
+              value={search}
+            />
             <SideBtnSearch>
-              <SideSearch />
-            </SideBtnSearch>
-            <SideInputForm placeholder="Búsqueda..." />
-            <SideBtnSearch>
-              <SideTimes />
+              <SideTimes onClick={handleReset} />
             </SideBtnSearch>
           </SideSearchForm>
         </SideBtnWrap>

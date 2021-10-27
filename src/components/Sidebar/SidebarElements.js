@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FaTimes, FaSearch } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 export const SidebarContainer = styled.aside`
   position: fixed;
@@ -37,7 +37,7 @@ export const SidebarLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-decoration: none;
   list-style: none;
   transition: 0.2s ease-in-out;
@@ -67,35 +67,13 @@ export const SideBtnWrap = styled.div`
   justify-content: center;
 `;
 
-export const SidebarRoute = styled(Link)`
-  border-radius: 50px;
-  background: #256ce1;
-  padding: 16px 54px;
-  font-size: 14px;
-  color: #fff;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #15cdfc;
-    color: #010606;
-  }
-`;
-
 export const SideSearchForm = styled.form`
   display: flex;
   align-items: center;
-  margin-top: 24px;
+  margin-top: 14px;
   justify-content: space-between;
   background: #e26d5c;
-  padding: 0.5rem;
+  padding: 0.8rem;
   border-radius: 0.5rem;
   color: white;
   box-shadow: 0.25rem 0.25rem 0rem #f0b2a8;
@@ -117,11 +95,6 @@ export const SideBtnSearch = styled.button`
   color: white;
 `;
 
-export const SideSearch = styled(FaSearch)`
-  color: black;
-  display: grid;
-  place-items: center;
-`;
 export const SideTimes = styled(FaTimes)`
   color: black;
   display: grid;

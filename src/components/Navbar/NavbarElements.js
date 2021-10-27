@@ -3,7 +3,6 @@ import { NavLink as Link } from "react-router-dom";
 import {
   FaBars,
   FaInstagram,
-  FaSearch,
   FaShoppingCart,
   FaTimes,
   FaWhatsapp,
@@ -29,19 +28,21 @@ export const Nav = styled.nav`
   display: flex;
   z-index: 50;
 `;
-export const NavLink = styled(Link)`
+export const NavLink = styled.button`
   color: black;
   display: flex;
+  background-color: transparent;
+  border-style: none;
   align-items: center;
   text-decoration: none;
   font-size: 16px;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-
-  &.active {
-    color: MediumOrchid;
+  &:hover {
+    color: #15cdfc;
     font-weight: bold;
+    transition: 0.2s ease-in-out;
   }
 `;
 export const NavLinkLogo = styled(Link)`
@@ -53,11 +54,6 @@ export const NavLinkLogo = styled(Link)`
   padding: 0 5rem;
   height: 100%;
   cursor: pointer;
-
-  &.active {
-    color: MediumOrchid;
-    font-weight: bold;
-  }
 `;
 
 export const Bars = styled(FaBars)`
@@ -71,7 +67,7 @@ export const Bars = styled(FaBars)`
     top: 0;
     right: 0;
     transform: translate(-100%, 75%);
-    font-size: 2.8rem;
+    font-size: 1.8rem;
     cursor: pointer;
   }
 `;
@@ -86,41 +82,13 @@ export const NavMenu = styled.div`
     display: none;
   }
 `;
-export const NavBtn = styled.nav`
-  display: flex;
-  align-items: center;
-  margin-right: 24px;
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`;
-
-export const NavBtnLink = styled(Link)`
-  border-radius: 50px;
-  background: #256ce1;
-  padding: 10px 22px;
-  font-size: 14px;
-  color: #fff;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #15cdfc;
-    color: #010606;
-  }
-`;
 
 export const NavSearchForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #e26d5c;
-  padding: 0.3rem;
+  padding: 0.8rem;
   border-radius: 0.5rem;
   color: white;
   box-shadow: 0.25rem 0.25rem 0rem #f0b2a8;
@@ -153,11 +121,6 @@ export const NavBtnIcon = styled(Link)`
   cursor: pointer;
 `;
 
-export const Search = styled(FaSearch)`
-  color: black;
-  display: grid;
-  place-items: center;
-`;
 export const Times = styled(FaTimes)`
   color: black;
   display: grid;

@@ -5,9 +5,7 @@ import {
   Cart,
   Instagram,
   Nav,
-  NavBtn,
   NavBtnIcon,
-  NavBtnLink,
   NavBtnSearch,
   NavEnd,
   NavInputForm,
@@ -15,7 +13,6 @@ import {
   NavMenu,
   NavSearchForm,
   NavStart,
-  Search,
   Times,
   Whatsapp,
   NavLinkLogo,
@@ -23,7 +20,16 @@ import {
 import { Badge } from "@material-ui/core";
 import { useLocation } from "react-router";
 
-export const Navbar = ({ toggleSidebar, totalItems }) => {
+export const Navbar = ({
+  toggleSidebar,
+  totalItems,
+  categories,
+  handleReset,
+  handleChange,
+  search,
+  handleResetCategorie,
+  onClickCategorie,
+}) => {
   const location = useLocation();
 
   return (
@@ -33,43 +39,37 @@ export const Navbar = ({ toggleSidebar, totalItems }) => {
           <img src={logo} alt="Malvarosa Verde" height="50px"></img>
         </NavLinkLogo>
         <NavSearchForm>
-          <NavBtnSearch>
-            <Search />
-          </NavBtnSearch>
-          <NavInputForm placeholder="Búsqueda..." />
-          <NavBtnSearch>
+          <NavInputForm
+            type="text"
+            placeholder="Búsqueda..."
+            onChange={handleChange}
+            value={search}
+          />
+          <NavBtnSearch onClick={handleReset}>
             <Times />
           </NavBtnSearch>
         </NavSearchForm>
-
         <Bars onClick={toggleSidebar} />
       </NavStart>
       <Nav>
         <NavMenu>
-          <NavLink to="/" className="activeStyle">
-            Inicio
-          </NavLink>
-          <NavLink to="/maceteros" className="activeStyle">
-            Maceteros
-          </NavLink>
-          <NavLink to="/flores" className="activeStyle">
-            Flores
-          </NavLink>
-          <NavLink to="/plantas" className="activeStyle">
-            Plantas
-          </NavLink>
-          <NavLink to="/herramientas" className="activeStyle">
-            Herramientas
-          </NavLink>
+          <NavLink onClick={handleResetCategorie}>Inicio</NavLink>
+          {categories.data &&
+            categories.data.map((categorie) => (
+              <NavLink
+                key={categorie.id}
+                value={categorie.name}
+                onClick={onClickCategorie}
+              >
+                {categorie.name}
+              </NavLink>
+            ))}
         </NavMenu>
         <NavEnd>
-          <NavBtn>
-            <NavBtnLink to="/signin">Iniciar sesión</NavBtnLink>
-          </NavBtn>
-          <NavBtnIcon to="instragram">
+          <NavBtnIcon to="/">
             <Instagram />
           </NavBtnIcon>
-          <NavBtnIcon to="whatsapp">
+          <NavBtnIcon to="/">
             <Whatsapp />
           </NavBtnIcon>
           {location.pathname === "/" && (
