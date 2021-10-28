@@ -8,7 +8,7 @@ import {
   Divider,
   Button,
   CssBaseline,
-} from "@mui/material";
+} from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AdressForm } from "../AdressForm";

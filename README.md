@@ -2,7 +2,7 @@ COMMERCE.JS
 Esta herramienta la utilice como Backend, para guardar todos los items y desplegarlos en mi aplicación, esta específicamente hecha para hacer e-commerce, por ende, lo reemplace por Firebase que fue enseñado en el curso.
 
 Material UI
-Utilice esta herramienta por la facilidad que daba para diseñar los elementos y utilizar los componentes. Anteriormente usaba la versión antigua de Material UI pero quería agregar la paginación la cual no se encontraba en la versión y tuve que actualizar, funciono todo bien pero no pude entender como editar los estilos que ya tenía, lo cual tuve que dejas instalado la versión anterior ya que con la actual me tiraba errores =(.
+Utilice esta herramienta por la facilidad que daba para diseñar los elementos y utilizar los componentes. Anteriormente usaba la versión antigua de Material UI pero quería agregar la paginación la cual no se encontraba en la versión y tuve que actualizar, funciono todo bien pero no pude entender como editar los estilos que ya tenía, lo cual tuve que dejas instalado la versión anterior ya que con la actual me tiraba errores =(. Además tuve que dejar algunos con la version antigua ya que no se veían bien en la nueva.
 
 STRIPE
 Lo utilice como prueba para confirmar tarjetas, solo funciona la tarjeta de prueba que es 4242424242 infinitamente, lo conecte además con commerce js y me avisa si compraron en la tienda.
