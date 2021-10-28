@@ -17,6 +17,7 @@ import {
   Whatsapp,
   NavLinkLogo,
   TotalNav,
+  DisplayNav,
 } from "./NavbarElements";
 import { Badge } from "@mui/material";
 import { useLocation } from "react-router";
@@ -30,6 +31,7 @@ export const Navbar = ({
   search,
   handleResetCategorie,
   onClickCategorie,
+  isOpenSidebar,
 }) => {
   const [navbar, setNavbar] = useState(false);
   const location = useLocation();
@@ -42,63 +44,66 @@ export const Navbar = ({
     }
   };
   window.addEventListener("scroll", changeNavbar);
+
   return (
     <>
-      <TotalNav
-        className={
-          navbar
-            ? "animate__animated animate__backInDown"
-            : "animate__animated animate__fadeInTopRight"
-        }
-      >
-        <NavStart>
-          <NavLinkLogo to="/">
-            <img src={logo} alt="Malvarosa Verde" height="50px"></img>
-          </NavLinkLogo>
-          <NavSearchForm>
-            <NavInputForm
-              type="text"
-              placeholder="Búsqueda..."
-              onChange={handleChange}
-              value={search}
-            />
-            <NavBtnSearch onClick={handleReset}>
-              <Times />
-            </NavBtnSearch>
-          </NavSearchForm>
-          <Bars onClick={toggleSidebar} />
-        </NavStart>
-        <Nav>
-          <NavMenu>
-            <NavLink onClick={handleResetCategorie}>Inicio</NavLink>
-            {categories.data &&
-              categories.data.map((categorie) => (
-                <NavLink
-                  key={categorie.id}
-                  value={categorie.name}
-                  onClick={onClickCategorie}
-                >
-                  {categorie.name}
-                </NavLink>
-              ))}
-          </NavMenu>
-          <NavEnd>
-            <NavBtnIcon to="/">
-              <Instagram />
-            </NavBtnIcon>
-            <NavBtnIcon to="/">
-              <Whatsapp />
-            </NavBtnIcon>
-            {location.pathname === "/" && (
-              <NavBtnIcon to="/carro">
-                <Badge badgeContent={totalItems} color="secondary">
-                  <Cart />
-                </Badge>
+      <DisplayNav className={!isOpenSidebar ? "" : "displayNav"}>
+        <TotalNav
+          className={
+            navbar
+              ? "animate__animated animate__backInDown"
+              : "animate__animated animate__fadeInTopRight"
+          }
+        >
+          <NavStart>
+            <NavLinkLogo to="/">
+              <img src={logo} alt="Malvarosa Verde" height="50px"></img>
+            </NavLinkLogo>
+            <NavSearchForm>
+              <NavInputForm
+                type="text"
+                placeholder="Búsqueda..."
+                onChange={handleChange}
+                value={search}
+              />
+              <NavBtnSearch onClick={handleReset}>
+                <Times />
+              </NavBtnSearch>
+            </NavSearchForm>
+            <Bars onClick={toggleSidebar} />
+          </NavStart>
+          <Nav>
+            <NavMenu>
+              <NavLink onClick={handleResetCategorie}>Inicio</NavLink>
+              {categories.data &&
+                categories.data.map((categorie) => (
+                  <NavLink
+                    key={categorie.id}
+                    value={categorie.name}
+                    onClick={onClickCategorie}
+                  >
+                    {categorie.name}
+                  </NavLink>
+                ))}
+            </NavMenu>
+            <NavEnd>
+              <NavBtnIcon to="/">
+                <Instagram />
               </NavBtnIcon>
-            )}
-          </NavEnd>
-        </Nav>
-      </TotalNav>
+              <NavBtnIcon to="/">
+                <Whatsapp />
+              </NavBtnIcon>
+              {location.pathname === "/" && (
+                <NavBtnIcon to="/carro">
+                  <Badge badgeContent={totalItems} color="secondary">
+                    <Cart />
+                  </Badge>
+                </NavBtnIcon>
+              )}
+            </NavEnd>
+          </Nav>
+        </TotalNav>
+      </DisplayNav>
     </>
   );
 };

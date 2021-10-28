@@ -43,7 +43,7 @@ export const HomeScreen = ({
   return (
     <>
       {caseFilter === 0 && <MainCarousel />}
-      <section style={{ marginTop: "80px" }}>
+      <section style={{ marginTop: "100px" }}>
         {caseFilter === 0 && (
           <Box
             sx={{ p: 5 }}

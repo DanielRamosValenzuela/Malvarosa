@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+COMMERCE.JS
+Esta herramienta la utilice como Backend, para guardar todos los items y desplegarlos en mi aplicación, esta específicamente hecha para hacer e-commerce, por ende, lo reemplace por Firebase que fue enseñado en el curso.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Material UI
+Utilice esta herramienta por la facilidad que daba para diseñar los elementos y utilizar los componentes. Anteriormente usaba la versión antigua de Material UI pero quería agregar la paginación la cual no se encontraba en la versión y tuve que actualizar, funciono todo bien pero no pude entender como editar los estilos que ya tenía, lo cual tuve que dejas instalado la versión anterior ya que con la actual me tiraba errores =(.
 
-## Available Scripts
+STRIPE
+Lo utilice como prueba para confirmar tarjetas, solo funciona la tarjeta de prueba que es 4242424242 infinitamente, lo conecte además con commerce js y me avisa si compraron en la tienda.
 
-In the project directory, you can run:
+BOOTSTRAP
+Solamente lo use para crear el Carousel, no lo use para nada más.
 
-### `npm start`
+Styled component
+Lo use para crear el Navbar y el Sidebar, el resto solo use el diseño de material UI, aunque estuve leyendo que ahora se puede usar styled component con material UI, característica que no use en este proyecto.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+React Router
+Fue usado para crear distintas páginas, aunque preferí aprender a usar bien el useEffect e ir cargando los componentes que hacer tantas páginas lo cual me funciono bastante bien.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Anímate.css
+Solo lo use para darle una animación al Navbar.
 
-### `npm test`
+Sweetalert2.
+Lo use para avisar errores y para confirmar compras.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React Icons.
+Lo use para los iconos.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+React-Hook-Form.
+Lo use para el formulario de compra.

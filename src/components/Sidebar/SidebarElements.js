@@ -49,16 +49,20 @@ export const SidebarLink = styled.button`
     font-weight: bold;
     transition: 0.2s ease-in-out;
   }
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 export const SidebarMenu = styled.ul`
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(6, 80px);
+  grid-template-columns: 3fr;
+  grid-template-rows: repeat(8, 80px);
   text-align: center;
 
   @media screen and (max-width: 480px) {
-    grid-template-rows: repeat(6, 60px);
+    font-size: 8px;
+    grid-template-rows: repeat(8, 60px);
   }
 `;
 

@@ -9,6 +9,11 @@ import {
 } from "react-icons/fa";
 import "animate.css";
 
+export const DisplayNav = styled.div`
+  &.displayNav {
+    display: none;
+  }
+`;
 export const TotalNav = styled.nav`
   position: fixed;
   z-index: 10000;

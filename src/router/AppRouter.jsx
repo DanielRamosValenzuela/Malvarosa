@@ -232,6 +232,7 @@ export const AppRouter = () => {
               search={search}
               handleResetCategorie={handleResetCategorie}
               onClickCategorie={onClickCategorie}
+              isOpenSidebar={isOpenSidebar}
             />
             <Sidebar
               isOpenSidebar={isOpenSidebar}
