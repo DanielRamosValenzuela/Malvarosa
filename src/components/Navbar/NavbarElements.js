@@ -7,12 +7,18 @@ import {
   FaTimes,
   FaWhatsapp,
 } from "react-icons/fa";
+import "animate.css";
+
+export const TotalNav = styled.nav`
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  top: 0;
+`;
 
 export const NavStart = styled.div`
   background: white;
-  position: sticky;
-  height: 70px;
-  margin-top: 10px;
+  height: 60px;
   display: flex;
   overflow: hidden;
   justify-content: center;
@@ -22,9 +28,9 @@ export const NavStart = styled.div`
     justify-content: start;
   }
 `;
-export const Nav = styled.nav`
+export const Nav = styled.div`
   background: LightGreen;
-  height: 80px;
+  height: 60px;
   display: flex;
   z-index: 50;
 `;

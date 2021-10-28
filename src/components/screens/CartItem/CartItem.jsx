@@ -6,7 +6,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import useStyles from "./stylesCartItem";
 

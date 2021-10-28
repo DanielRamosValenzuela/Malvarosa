@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
 export const SidebarContainer = styled.aside`
@@ -33,17 +32,18 @@ export const IconClose = styled.div`
 export const SidebarWrapper = styled.div`
   color: black;
 `;
-export const SidebarLink = styled(Link)`
+export const SidebarLink = styled.button`
+  color: black;
   display: flex;
+  background-color: transparent;
+  border-style: none;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
   text-decoration: none;
-  list-style: none;
-  transition: 0.2s ease-in-out;
-  color: red;
+  font-size: 16px;
+  padding: 0 1rem;
+  height: 100%;
   cursor: pointer;
-
   &:hover {
     color: #15cdfc;
     font-weight: bold;

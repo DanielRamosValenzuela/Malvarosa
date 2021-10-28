@@ -20,6 +20,8 @@ export const Sidebar = ({
   handleChange,
   handleReset,
   search,
+  handleResetCategorie,
+  onClickCategorie,
 }) => {
   return (
     <SidebarContainer isOpenSidebar={isOpenSidebar}>
@@ -28,12 +30,14 @@ export const Sidebar = ({
       </IconClose>
       <SidebarWrapper>
         <SidebarMenu>
-          <SidebarLink to="/" onClick={toggleSidebar}>
-            Inicio
-          </SidebarLink>
+          <SidebarLink onClick={handleResetCategorie}>Inicio</SidebarLink>
           {categories.data &&
             categories.data.map((categorie) => (
-              <SidebarLink to={`/${categorie.name}`} key={categorie.id}>
+              <SidebarLink
+                onClick={onClickCategorie}
+                key={categorie.id}
+                value={categorie.name}
+              >
                 {categorie.name}
               </SidebarLink>
             ))}

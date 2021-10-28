@@ -8,7 +8,7 @@ import {
   Divider,
   Button,
   CssBaseline,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AdressForm } from "../AdressForm";
@@ -16,7 +16,7 @@ import { PaymentForm } from "../PaymentForm";
 import { commerce } from "../../../lib/commerce";
 
 import useStyles from "./stylesCheckout";
-import { Loading } from "../../../Loading";
+import { Loading } from "../../../lib/Loading";
 
 const steps = ["Detalles de envío", "Sistema de pago"];
 
@@ -107,7 +107,7 @@ export const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
   if (!didMount) {
     //The component mounts, then the effect runs and sets didMount to true, then the component unmounts but didMount is never reset
-    return null; //This was a method that I solve an SSR issue in my app thought will go with this case as well. If not promise should be cancelled I guess
+    return <Loading />; //This was a method that I solve an SSR issue in my app thought will go with this case as well. If not promise should be cancelled I guess
   }
 
   return (

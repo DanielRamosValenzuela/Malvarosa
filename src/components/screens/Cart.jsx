@@ -1,9 +1,10 @@
-import React from "react";
-import { Container, Typography, Button, Grid } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { Container, Typography, Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import useStyles from "./stylesCart";
 import { CartItem } from "./CartItem/CartItem";
+import { Loading } from "../lib/Loading";
 
 export const Cart = ({
   cart,
@@ -11,6 +12,13 @@ export const Cart = ({
   onRemoveFromCart,
   onEmptyCart,
 }) => {
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    //https://stackoverflow.com/questions/54954385/react-useeffect-causing-cant-perform-a-react-state-update-on-an-unmounted-comp
+    setDidMount(true); // para error:Can't perform a React state update on an unmounted component
+    return () => setDidMount(false); //didMount will be true in the unmounted state (ver if al final)
+  }, []);
+
   const classes = useStyles();
 
   const handleEmptyCart = () => onEmptyCart();
@@ -24,7 +32,12 @@ export const Cart = ({
     </Typography>
   );
 
-  if (!cart.line_items) return "Cargando...";
+  if (!cart.line_items) return <Loading />;
+
+  if (!didMount) {
+    //The component mounts, then the effect runs and sets didMount to true, then the component unmounts but didMount is never reset
+    return <Loading />; //This was a method that I solve an SSR issue in my app thought will go with this case as well. If not promise should be cancelled I guess
+  }
 
   const renderCart = () => (
     <>

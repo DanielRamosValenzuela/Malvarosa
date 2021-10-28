@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Box, Grid, Typography } from "@material-ui/core";
+import { Container, Box, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaFacebook, FaTwitter } from "react-icons/fa";
 import useStyles from "./stylesFooter";

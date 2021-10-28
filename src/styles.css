@@ -21,6 +21,8 @@ body {
 
 #root {
   height: 100%;
+  --animate-duration: 800ms;
+  --animate-delay: 0.9s;
 }
 
 h1 {
@@ -66,7 +68,9 @@ li {
 .containerCarousel {
   margin: auto;
   position: relative;
+  margin-top: 120px;
   overflow: hidden;
+  transition: 0.3s ease-in-out;
 }
 
 .slide-carousel {
@@ -79,8 +83,9 @@ li {
 .slide-carousel img {
   max-width: 100%;
   max-height: 100%;
-  -o-object-fit: contain;
-  object-fit: contain;
+  height: 600px;
+  -o-object-fit: fill;
+  object-fit: fill;
   opacity: 0.9;
 }
 

@@ -6,7 +6,7 @@ import {
   Grid,
   Typography,
   Button,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 

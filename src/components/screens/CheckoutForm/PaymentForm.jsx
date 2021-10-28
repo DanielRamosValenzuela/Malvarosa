@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Button, Divider } from "@material-ui/core";
+import { Typography, Button, Divider } from "@mui/material";
 import {
   Elements,
   CardElement,

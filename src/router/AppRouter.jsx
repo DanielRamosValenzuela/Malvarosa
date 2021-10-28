@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
-import { CssBaseline } from "@material-ui/core";
+import { CssBaseline } from "@mui/material";
 
 import { commerce } from "../components/lib/commerce";
 import { Footer } from "../components/Footer/Footer";
@@ -10,7 +10,8 @@ import { HomeScreen } from "../components/screens/HomeScreen";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import { Cart } from "../components/screens/Cart";
 import { Checkout } from "../components/screens/CheckoutForm/Checkout/Checkout";
-import History from "../components/History";
+import History from "../components/lib/History";
+import { Loading } from "../components/lib/Loading";
 
 export const AppRouter = () => {
   const [products, setProducts] = useState([]);
@@ -23,11 +24,19 @@ export const AppRouter = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
   const [caseFilter, setCaseFilter] = useState(0);
+  const [orderBy, setOrderBy] = useState("");
+  const [didMount, setDidMount] = useState(false);
   let history = History;
+
+  useEffect(() => {
+    //https://stackoverflow.com/questions/54954385/react-useeffect-causing-cant-perform-a-react-state-update-on-an-unmounted-comp
+    setDidMount(true); // para error:Can't perform a React state update on an unmounted component
+    return () => setDidMount(false); //didMount will be true in the unmounted state (ver if al final)
+  }, []);
 
   const Toast = Swal.mixin({
     toast: true,
-    position: "top-end",
+    position: "bottom-end",
     showConfirmButton: false,
     timer: 2000,
     timerProgressBar: true,
@@ -112,6 +121,7 @@ export const AppRouter = () => {
     setCaseFilter(1);
     setSearch(e.target.value);
     setCategoriesInput("");
+    setOrderBy("");
   };
 
   const handleReset = (e) => {
@@ -119,6 +129,7 @@ export const AppRouter = () => {
     setCaseFilter(0);
     setSearch("");
     setCategoriesInput("");
+    setOrderBy("");
   };
 
   const onClickCategorie = (e) => {
@@ -126,19 +137,31 @@ export const AppRouter = () => {
     setCaseFilter(2);
     setCategoriesInput(e.target.value);
     setSearch("");
-
+    if (isOpenSidebar === true) {
+      toggleSidebar();
+    }
     if (history.location.pathname !== "/") {
       History.push("/");
     }
   };
+
   const handleResetCategorie = (e) => {
     e.preventDefault();
     setCaseFilter(0);
     setCategoriesInput("");
     setSearch("");
+    setOrderBy("");
+    if (isOpenSidebar === true) {
+      toggleSidebar();
+    }
     if (history.location.pathname !== "/") {
       History.push("/");
     }
+  };
+
+  const handleChangeOrderBy = (e) => {
+    e.preventDefault();
+    setOrderBy(e.target.value);
   };
 
   const toggleSidebar = () => {
@@ -183,9 +206,15 @@ export const AppRouter = () => {
         break;
 
       default:
+        <Loading />;
         break;
     }
   }, [caseFilter, search, categoriesInput, products]);
+
+  if (!didMount) {
+    //The component mounts, then the effect runs and sets didMount to true, then the component unmounts but didMount is never reset
+    return <Loading />; //This was a method that I solve an SSR issue in my app thought will go with this case as well. If not promise should be cancelled I guess
+  }
 
   return (
     !!products &&
@@ -211,7 +240,8 @@ export const AppRouter = () => {
               handleReset={handleReset}
               handleChange={handleChange}
               search={search}
-              setCategoriesInput={setCategoriesInput}
+              handleResetCategorie={handleResetCategorie}
+              onClickCategorie={onClickCategorie}
             />
           </header>
           <main>
@@ -223,6 +253,8 @@ export const AppRouter = () => {
                   search={search}
                   categoriesInput={categoriesInput}
                   caseFilter={caseFilter}
+                  orderBy={orderBy}
+                  handleChangeOrderBy={handleChangeOrderBy}
                 />
               </Route>
               <Route path="/carro" exact>
