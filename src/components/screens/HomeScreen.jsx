@@ -27,6 +27,10 @@ export const HomeScreen = ({
   categoriesInput,
   orderBy,
   handleChangeOrderBy,
+  pagination,
+  setPagination,
+  page,
+  setPage,
 }) => {
   const [didMount, setDidMount] = useState(false);
 
@@ -92,6 +96,16 @@ export const HomeScreen = ({
             <Typography variant="h4">Productos de {categoriesInput}</Typography>
           </Box>
         )}
+        {caseFilter === 1 && (
+          <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
+            <Typography variant="h4">
+              Buscando los productos por su nombre...
+            </Typography>
+            <Typography variant="h6">
+              Aprete inicio para volver al menu principal
+            </Typography>
+          </Box>
+        )}
         {caseFilter !== 1 && (
           <div style={{ paddingTop: "60px" }}>
             <Grid
@@ -123,6 +137,10 @@ export const HomeScreen = ({
           onAddToCart={onAddToCart}
           search={search}
           orderBy={orderBy}
+          pagination={pagination}
+          setPagination={setPagination}
+          page={page}
+          setPage={setPage}
         />
       </section>
     </>

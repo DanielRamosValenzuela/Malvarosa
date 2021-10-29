@@ -24,8 +24,11 @@ export const AppRouter = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
   const [caseFilter, setCaseFilter] = useState(0);
-  const [orderBy, setOrderBy] = useState("");
+  const [orderBy, setOrderBy] = useState(0);
   const [didMount, setDidMount] = useState(false);
+  const [pagination, setPagination] = useState(1);
+  const [page, setPage] = useState(0);
+
   let history = History;
 
   useEffect(() => {
@@ -118,22 +121,29 @@ export const AppRouter = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
+    setPagination(1);
+    setPage(0);
+
     setCaseFilter(1);
     setSearch(e.target.value);
     setCategoriesInput("");
-    setOrderBy("");
+    setOrderBy(0);
   };
 
   const handleReset = (e) => {
     e.preventDefault();
+    setPagination(1);
+    setPage(0);
     setCaseFilter(0);
     setSearch("");
     setCategoriesInput("");
-    setOrderBy("");
+    setOrderBy(0);
   };
 
   const onClickCategorie = (e) => {
     e.preventDefault();
+    setPagination(1);
+    setPage(0);
     setCaseFilter(2);
     setCategoriesInput(e.target.value);
     setSearch("");
@@ -147,10 +157,12 @@ export const AppRouter = () => {
 
   const handleResetCategorie = (e) => {
     e.preventDefault();
+    setPagination(1);
+    setPage(0);
     setCaseFilter(0);
     setCategoriesInput("");
     setSearch("");
-    setOrderBy("");
+    setOrderBy(0);
     if (isOpenSidebar === true) {
       toggleSidebar();
     }
@@ -161,6 +173,8 @@ export const AppRouter = () => {
 
   const handleChangeOrderBy = (e) => {
     e.preventDefault();
+    setPagination(1);
+    setPage(0);
     setOrderBy(e.target.value);
   };
 
@@ -256,6 +270,10 @@ export const AppRouter = () => {
                   caseFilter={caseFilter}
                   orderBy={orderBy}
                   handleChangeOrderBy={handleChangeOrderBy}
+                  pagination={pagination}
+                  setPagination={setPagination}
+                  page={page}
+                  setPage={setPage}
                 />
               </Route>
               <Route path="/carro" exact>

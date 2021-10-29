@@ -9,13 +9,21 @@ import { Loading } from "../lib/Loading";
 
 const numberPerPage = 6;
 
-export const Products = ({ onAddToCart, search, filterProducts, orderBy }) => {
-  const [pagination, setPagination] = useState(1);
+export const Products = ({
+  onAddToCart,
+  search,
+  filterProducts,
+  orderBy,
+  pagination,
+  setPagination,
+  page,
+  setPage,
+}) => {
   const [arrProducts, setArrProducts] = useState([]);
-  const [page, setPage] = useState(0);
-  const classes = useStyles();
+
   const [didMount, setDidMount] = useState(false);
 
+  const classes = useStyles();
   useEffect(() => {
     //https://stackoverflow.com/questions/54954385/react-useeffect-causing-cant-perform-a-react-state-update-on-an-unmounted-comp
     setDidMount(true); // para error:Can't perform a React state update on an unmounted component
